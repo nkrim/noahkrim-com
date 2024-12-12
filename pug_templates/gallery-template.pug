@@ -1,0 +1,93 @@
+-const base_path = '/static/img/g/';
+-let path = (s, f) => `${base_path}${gallery_dir}${s.section_dir}${f}.${image_ext}`;
+-let alt_path = (s, f) => `${base_path}${gallery_dir}${s.section_dir}${f}.${image_alt_ext}`;
+-let viewer_file = p => `${p.file}-${p.viewer_width}x${p.viewer_height}`;
+-let gallery_file = p => `${p.file}-preview`;
+doctype html
+html
+	head
+		title #{title}
+		meta(
+			name='description'
+			content=description
+		)
+		include ../pug_includes/head_base.html
+		link(
+			rel='stylesheet'
+			href='/static/css/gallery-style.css'
+		)
+		include ../pug_includes/head_social_meta_gallery.pug
+	body
+		include ../pug_includes/noscript.html
+		include ../pug_includes/header_release.html
+
+		#gallery
+			h1#galleryTitle.text-serif.antialias #{title}
+			h3#galleryDescription.text-mono.antialias
+				!=description_html
+			include ../pug_includes/gallery_sections.pug
+		#photoViewer
+			#viewerLeftButton.viewer-horizontal-element
+				svg(
+					class="viewer-arrow"
+					xmlns="http://www.w3.org/2000/svg"
+					width="24" 
+					height="24" 
+					viewBox="0 0 24 24"
+				)
+					path(
+						d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
+					)/
+			#viewerImageList.viewer-middle-space.viewer-horizontal-element
+				each s in sections
+					each p in s.images
+						picture(
+							class="photo-viewer-image"
+							image-ratio=1.0*p.viewer_width/p.viewer_height
+							style=`width: ${p.viewer_width}px; height: ${p.viewer_height}px;`
+							data-section=s.title
+							data-name=p.name
+							data-path=path(s, viewer_file(p))
+							data-type=`image/${image_ext}`
+							alt-data-path=alt_path(s, viewer_file(p))
+							alt-data-type=`image/${image_ext}`
+						)
+			#viewerRightButton.viewer-horizontal-element
+				svg(
+					class="viewer-arrow"
+					xmlns="http://www.w3.org/2000/svg"
+					width="24" 
+					height="24" 
+					viewBox="0 0 24 24"
+				)
+					path(
+						d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"
+					)/
+			#viewerTopClose
+				svg(
+					class="viewer-x"
+					xmlns="http://www.w3.org/2000/svg"
+					width="24" 
+					height="24" 
+					viewBox="0 0 24 24"
+				)
+					path(
+						d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"
+					)/
+			#viewerBottomClose
+				span#viewerText.text-mono
+				//-
+					svg(
+						class="viewer-x"
+						xmlns="http://www.w3.org/2000/svg"
+						width="24" 
+						height="24" 
+						viewBox="0 0 24 24"
+					)
+						path(
+							d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"
+						)
+
+		include ../pug_includes/footer.html
+		script(src='/static/js/gallery.min.js')
+		include ../pug_includes/scripts.html

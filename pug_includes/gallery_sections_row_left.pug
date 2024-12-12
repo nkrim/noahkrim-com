@@ -1,0 +1,29 @@
+-let i = 0;
+each s in sections
+	.gallery-section.gallery-section-row-left
+		.gallery-section-canvas(
+			style=`width: ${s.width}px; height: auto`
+			canvas-width=s.width
+		)
+			h2.gallery-section-title.text-sans-web
+				=s.title
+			each p in s.images
+				picture(
+					class="gallery-image"
+					gallery-index=i++
+					image-ratio=1.0*p.width/p.height
+					style=`width: ${p.width}px; height: ${p.height}px; left: ${p.x}px; top: ${p.y}px;`
+				)
+					source(
+						srcset=path(s, p)
+						type=`image/${image_ext}`
+					)
+					source(
+						srcset=alt_path(s, p)
+						type=`image/${image_ext}`
+					)
+					img(
+						src=alt_path(s, p)
+						alt=p.name
+						tabindex=i
+					)

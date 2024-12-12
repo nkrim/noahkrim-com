@@ -1,0 +1,59 @@
+each r in releases.reverse()
+	div(
+		id=r.number
+		class=`tile release-tile ${r.release_type}-tile`
+		style=`background-image: url('${r.image.path}');`
+		alt-path=r.image.alt_path
+	)
+		.tile-content-container: .tile-content
+			.tile-content-image-container
+				picture(
+					class="tile-content-header-image"
+					image-ratio=1.0*r.image.width/r.image.height
+				)
+					source(
+						srcset=r.image.path
+						type="image/webp"
+					)
+					source(
+						srcset=r.image.alt_path
+						type=`image/${/\.([\w]+)$/i.exec(r.image.alt_path)[1].toLocaleLowerCase()}`
+					)
+					img(
+						src=r.image.alt_path
+						alt=r.title
+					)
+			.tile-content-text-section
+				span.tile-media.text-small.text-mono.unstyle-link
+					=`[[${r.release_type}]]`
+				span.tile-date.text-small.text-mono
+					!='&nbsp'+r.release_date
+				br/
+				h1.tile-content-h1.text-large
+					=r.title
+				h2.tile-content-h2.text-medium
+					=r.artist
+				if r.sub_artist
+					h3.tile-content-h3.text-regular
+						=r.sub_artist
+				p.text-regular.unstyle-link
+					!=r.description_html
+				p.text-mono.tile-content-link-list
+					each link in r.links
+						a(
+							class="unstyle-link tile-content-link" 
+							href=link.url
+							target="_blank"
+						)
+							=link.service
+		.tile-borders
+			div(
+				class="tile-title-text text-sans-web"
+				style="font-weight: 200;"
+			)
+				span.issue-number.text-mono
+					=r.number
+			div.tile-border.tile-border-top
+			div.tile-border.tile-border-right
+			div.tile-border.tile-border-bottom
+			div.tile-border.tile-border-left

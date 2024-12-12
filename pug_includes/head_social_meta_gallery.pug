@@ -1,0 +1,33 @@
+- let urlbase = 'http://badoptics.co';
+- let image_meta = sharing_image || image;
+//- Social tags
+meta(
+	name="twitter:title"
+	content=title)/
+meta(
+	name="twitter:description"
+	content=description_text)/
+meta(
+	name="twitter:image"
+	content=`${urlbase}${image_meta.alt_path}`)/
+//- Twitter Summary card images must be at least 120x120px -->
+//-<meta name="twitter:creator" content="@author_handle">
+//- Open Graph data
+meta(
+	property="og:title"
+	content=title)/
+meta(
+	property="og:description"
+	content=description_text)/
+meta(
+	property="og:url"
+	content=`${urlbase}/visual/${url}.html`)/
+meta(
+	property="og:image"
+	content=`${urlbase}${image_meta.alt_path}`)/
+meta(
+	property="og:image:width"
+	content=image_meta.width)/
+meta(
+	property="og:image:height"
+	content=image_meta.height)/

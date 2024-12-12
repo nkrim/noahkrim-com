@@ -1,0 +1,436 @@
+{
+	"releases": 
+	[
+		{
+			"number": "noah",
+			"release_type": "about",
+			"release_date": " ",
+			"title": "Noah K",
+			"description_html": "<span class=\"text-mono\">programmer >>= games <*> webs<br>$$ __puzzle_meister</span>", 
+			"description_text": "programmer >>= games <*> webs<br>$$ __puzzle_meister",
+			"image": {
+				"path": "/static/img/noah-800x800.webp",
+				"alt_path": "/static/img/noah-800x800.png",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{
+					"service": "games",
+					"url": "https://pastapig.itch.io"
+				},
+				{
+					"service": "twitter",
+					"url": "https://twitter.com/kquarkchow"
+				}
+			]
+		},
+		{
+			"number": "cvik",
+			"release_type": "about",
+			"release_date": " ",
+			"title": "Cvik",
+			"description_html": "South side native. Exploring the sounds of the city with an eye towards the obscure and the magnetic.", 
+			"description_text": "South side native. Exploring the sounds of the city with an eye towards the obscure and the magnetic.",
+			"image": {
+				"path": "/static/img/cvik-800x800.webp",
+				"alt_path": "/static/img/cvik-800x800.png",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{
+					"service": "spotify",
+					"url": "https://open.spotify.com/artist/6Okc8zOGlK08aw7ejWroA4?si=JKoCMV-BQdqIQVZb7YsGag"
+				}
+			]
+		},
+		{
+			"number": "something-soft",
+			"release_type": "about",
+			"release_date": " ",
+			"title": "Matt",
+			"artist": "(something soft)",
+			"description_html": "A person <i>(supposedly)</i> who makes things sometimes <i>(confirmed)</i>. Some of them you may even like.", 
+			"description_text": "A person (supposedly) who makes things sometimes (confirmed). Some of them you may even like.",
+			"image": {
+				"path": "/static/img/matt-800x800.webp",
+				"alt_path": "/static/img/matt-800x800.png",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{
+					"service": "spotify",
+					"url": "https://open.spotify.com/artist/5VDZcJPeyQiA432mMcXE9f?si=s8hQ06QSRN2PWxE9RFxQOg"
+				},
+				{
+					"service": "soundcloud",
+					"url": "https://soundcloud.com/somethingsoft"
+				},
+				{
+					"service": "instagram",
+					"url": "https://www.instagram.com/somethingsoft_/"
+				}
+			]
+		},
+		{
+			"number": "not-yet",
+			"release_type": "about",
+			"release_date": " ",
+			"title": "Sam",
+			"artist": "(Not Yet)",
+			"description_html": "Made from concentrate. Shake before use. Best by <i>??/??/????</i>.", 
+			"description_text": "Made from concentrate. Shake before use. Best by ??/??/????.",
+			"image": {
+				"path": "/static/img/sam-800x800.webp",
+				"alt_path": "/static/img/sam-800x800.png",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{
+					"service": "spotify",
+					"url": "https://open.spotify.com/artist/0UmYlqE94N23vv5zN8RUh1?si=HXK6AN-WQnqe19jTtenMPQ"
+				},
+				{
+					"service": "sam basté media",
+					"url": "http://sambastemedia.com"
+				},
+				{
+					"service": "instagram",
+					"url": "https://www.instagram.com/not.yet.tbd/"
+				}
+			]
+		},
+		{
+			"number": "hassaan-e",
+			"release_type": "about",
+			"release_date": " ",
+			"title": "Hassaan E",
+			"description_html": "Delhi and DC. Drums and despair. Love and emotion.", 
+			"description_text": "Delhi and DC. Drums and despair. Love and emotion.",
+			"image": {
+				"path": "/static/img/hassaan-800x800.webp",
+				"alt_path": "/static/img/hassaan-800x800.png",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{
+					"service": "spotify",
+					"url": "https://open.spotify.com/artist/1vhOkfuBUNPP0X6Lw08YD9?si=TaBQY51VT3O3IDW0pA4Ntg"
+				},
+				{
+					"service": "soundcloud",
+					"url": "https://soundcloud.com/hassaane"
+				},
+				{
+					"service": "instagram",
+					"url": "https://www.instagram.com/herecomeshassaan/"
+				}
+			]
+		},
+		{
+			"number": "001",
+			"release_type": "sonic",
+			"release_date": "2018-08-17",
+			"title": "What Day Is Today",
+			"artist": "something soft",
+			"description_html": "A collection of tracks made from aug 13. to aug 19, 2018.", 
+			"description_text": "A collection of tracks made from aug 13. to aug 19, 2018.", 
+			"image": {
+				"path": "/static/img/whatdayistoday-800x800.webp",
+				"alt_path": "/static/img/whatdayistoday-800x800.jpg",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{ 
+					"service": "spotify",
+				 	"url": "https://open.spotify.com/album/15XHAOWRRuYDmFESRzCuv3?si=y-T9iBpfTcGn9W_ITJ1ECw" 
+				}, { 
+					"service": "soundcloud",
+					"url": "https://soundcloud.com/somethingsoft/sets/what-day-is-today"
+				}
+			]
+		},
+		{
+			"number": "002",
+			"release_type": "sonic",
+			"release_date": "2018-10-18",
+			"title": "misadventures",
+			"artist": "hassaan e",
+			"description_html": "snippets from the well of memories.", 
+			"description_text": "snippets from the well of memories.", 
+			"image": {
+				"path": "/static/img/misadventures-500x500.webp",
+				"alt_path": "/static/img/misadventures-500x500.jpg",
+				"width": 500,
+				"height": 500
+			},
+			"links": [
+				{ 
+					"service": "soundcloud",
+					"url": "https://soundcloud.com/hassaane/misadventures"
+				}
+			]
+		},
+		{
+			"number": "003",
+			"release_type": "sonic",
+			"release_date": "2019-01-14",
+			"title": "14 Untitled",
+			"artist": "LM Entry",
+			"description_html": "A brief series of docudramas // In 1949 a pack of wolves assembles along the newly formed East German border // Encapsulating short but expository states of being // Their ears perk as the winds start to rise // Oct. 2018 - Jan. 2019", 
+			"description_text": "A brief series of docudramas // In 1949 a pack of wolves assembles along the newly formed East German border // Encapsulating short but expository states of being // Their ears perk as the winds start to rise // Oct. 2018 - Jan. 2019", 
+			"image": {
+				"path": "/static/img/14-untitled-800x800.webp",
+				"alt_path": "/static/img/14-untitled-800x800.jpg",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{ 
+					"service": "spotify",
+				 	"url": "https://open.spotify.com/album/6dX7Cj7pk3a1ezU71jietA?si=oyTSxuCCSruzA37IKLaSyg" 
+				}, { 
+					"service": "soundcloud",
+					"url": "https://soundcloud.com/lmentry/sets/14-untitled"
+				}
+			]
+		},
+		{
+			"number": "004",
+			"release_type": "interactive",
+			"release_date": "2019-02-07",
+			"title": "Portal-ban",
+			"artist": "Noah K",
+			"description_html": "A Sokoban-style clone of <i>Portal</i>. Made using Stephen Lavelle's <a href=\"https://www.puzzlescript.net/\" class=\"text-link\">PuzzleScript</a>.", 
+			"description_text": "A Sokoban-style clone of Portal. Made using Stephen Lavelle's PuzzleScript.", 
+			"image": {
+				"path": "/static/img/portal-ban-800x800.webp",
+				"alt_path": "/static/img/portal-ban-800x800.jpg",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{ 
+					"service": "game",
+				 	"url": "/interactive/portal-ban.html" 
+				}, { 
+					"service": "source code",
+					"url": "https://www.puzzlescript.net/editor.html?hack=2c2b646ade475185a14d70038b264ff7"
+				}
+			]
+		},
+		{
+			"number": "005",
+			"release_type": "sonic",
+			"release_date": "2019-02-17",
+			"title": "Llamada",
+			"artist": "Not Yet",
+			"description_html": "<span class=\"text-mono\">//im trying to think//<br>&nbsp;&nbsp;composed entirely<br>&nbsp;&nbsp;from<br>&nbsp;&nbsp;a singular news report<br>//why is this so hard//<br>&nbsp;&nbsp;about venezuela<br>&nbsp;&nbsp;think of it what you will</span>", 
+			"description_text": "//im trying to think// composed entirely from a singular news report //why is this so hard// about venezuela think of it what you will", 
+			"image": {
+				"path": "/static/img/llamada-800x800.webp",
+				"alt_path": "/static/img/llamada-800x800.jpg",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{ 
+					"service": "spotify",
+				 	"url": "https://open.spotify.com/track/7cNWZb8ZQws9dHFrWFKd27?si=R4Y3pkXuSJWO01DpVbQg3g" 
+				}, { 
+					"service": "soundcloud",
+					"url": "https://soundcloud.com/badopticsco/llamada-not-yet"
+				}
+			]
+		},
+		{
+			"number": "006",
+			"release_type": "sonic",
+			"release_date": "2019-04-04",
+			"title": "Splotchy",
+			"artist": "something soft",
+			"description_html": "production requires time and time brings discontentment.<br>the view is splotchy but the picture turned out alright.", 
+			"description_text": "production requires time and time brings discontentment. the view is splotchy but the picture turned out alright.", 
+			"image": {
+				"path": "/static/img/splotchy-800x800.webp",
+				"alt_path": "/static/img/splotchy-800x800.jpg",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{ 
+					"service": "spotify",
+				 	"url": "https://open.spotify.com/album/4tN8INc6o4wrAHjbq5DBpW?si=vHkDsRFpSryneI4-xoLgfw" 
+				}, { 
+					"service": "soundcloud",
+					"url": "https://soundcloud.com/badopticsco/sets/splotchy"
+				}
+			]
+		},
+		{
+			"number": "007",
+			"release_type": "sonic",
+			"release_date": "2019-07-01",
+			"title": "It Hurts",
+			"artist": "Not Yet",
+			"description_html": "Regression<br>Depression<br>A sense of deep repression", 
+			"description_text": "Regression, depression, a sense of deep repression", 
+			"image": {
+				"path": "/static/img/it-hurts-800x800.webp",
+				"alt_path": "/static/img/it-hurts-800x800.jpg",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{ 
+					"service": "spotify",
+				 	"url": "https://open.spotify.com/track/6McO3JpgggHDU5LFagziF4?si=C-3_j-ymQdibndxq-DnJCQ" 
+				}, { 
+					"service": "apple music",
+					"url": "https://music.apple.com/album/it-hurts-single/1469673912"
+				}, { 
+					"service": "soundcloud",
+					"url": "https://soundcloud.com/badopticsco/it-hurts-not-yet"
+				}
+			]
+		},
+		{
+			"number": "008",
+			"release_type": "sonic",
+			"release_date": "2019-12-13",
+			"title": "Bad Optics Vol. 1",
+			"artist": "Various Artists",
+			"description_html": "After 12 months of painful labor, a babby is born.<br/>The first sonic collaboration within Bad Optics.", 
+			"description_text": "After 12 months of painful labor, a babby is born. The first sonic collaboration within Bad Optics.",
+			"image": {
+				"path": "/static/img/bad-optics-vol-1-800x800.webp",
+				"alt_path": "/static/img/bad-optics-vol-1-800x800.jpg",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{
+					"service": "spotify",
+					"url": "https://open.spotify.com/album/7AXcu0eSzB63wE5T15s7O1?si=Gzbnn1lhQE2DV_WcP_GQrg"
+				}, {
+					"service": "apple music",
+					"url": "https://music.apple.com/us/album/bad-optics-vol-1-ep/1489246167"
+				}, {
+					"service": "bandcamp",
+					"url": "https://badopticsco.bandcamp.com/"
+				}, {
+					"service": "soundcloud",
+					"url": "https://soundcloud.com/badopticsco/sets/vol-1"
+				}, {
+					"service": "amazon music",
+					"url": "https://music.amazon.com/albums/B081ZK3YTX"
+				}
+			]
+		},
+		{
+			"number": "009",
+			"release_type": "sonic",
+			"release_date": "2020-02-02",
+			"title": "Movin' Me Up",
+			"artist": "something soft",
+			"sub_artist": "remix by hassaan e",
+			"description_html": "An uplifting and optimistic ode to the end of a long day; an attempt to capture the fleeting and elusive feelings of hope.<br><br><i>With every step we move up and up.</i><br><br>A single from the upcoming something soft project.", 
+			"description_text": "An uplifting and optimistic ode to the end of a long day; an attempt to capture the fleeting and elusive feelings of hope. With every step we move up and up. A single from the upcoming something soft project. Remix by hassaan e.",
+			"image": {
+				"path": "/static/img/movin-me-up-800x800.webp",
+				"alt_path": "/static/img/movin-me-up-800x800.jpg",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{
+					"service": "spotify",
+					"url": "https://open.spotify.com/album/5BYfBU9QSzZMBIEsh2if47?si=zVHXYQwFQHyvGzJEWYhi4Q"
+				},
+				{
+					"service": "apple music",
+					"url": "https://music.apple.com/us/album/movin-me-up-single/1496514740?app=apple%20music&ign-mpt=uo%3D4"
+				},
+				{
+					"service": "soundcloud",
+					"url": "https://soundcloud.com/badopticsco/sets/movin-me-up"
+				},
+				{
+					"service": "google play",
+					"url": "https://play.google.com/store/music/album/Something_Soft_Movin_Me_Up?id=Bjsvhjznfmv7laec4swbjlm5baq"
+				},
+				{
+					"service": "amazon",
+					"url": "https://www.amazon.com/Movin-Me-Up-Something-Soft/dp/B0845VCWKY/ref=sr_1_1?keywords=something+soft&qid=1580623659&s=dmusic&sr=1-1"
+				}
+			]
+		},
+		{
+			"number": "010",
+			"release_type": "visual",
+			"release_date": "2020-05-20",
+			"title": "Machinations 19-20",
+			"artist": "matt (something soft)",
+			"description_html": "the premier gallery by matt (something soft). acts of self-expression and emotional containment with a focus on manipulation of texture and color. creating schematics of inner peace.<br><br>all pieces created between 2019 and 2020 and are acrylic on paper or canvas.", 
+			"description_text": "the premier gallery by matt (something soft). acts of self-expression and emotional containment with a focus on manipulation of texture and color. creating schematics of inner peace. all pieces created between 2019 and 2020 and are acrylic on paper or canvas.",
+			"image": {
+				"path": "/static/img/machinations-800x800.webp",
+				"alt_path": "/static/img/machinations-800x800.jpg",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{
+					"service": "go to gallery",
+					"url": "/visual/machinations.html"
+				}
+			]
+		},
+		{
+			"number": "011",
+			"release_type": "sonic",
+			"release_date": "2020-06-06",
+			"title": "misunderstood",
+			"artist": "hassaan e",
+			"description_html": "<span class=\"text-mono\">journal entries from times of pain. remorse at the gaps between the islands of understanding.</span>",
+			"description_text": "journal entries from times of pain. remorse at the gaps between the islands of understanding.",
+			"image": {
+				"path": "/static/img/misunderstood-800x800.webp",
+				"alt_path": "/static/img/misunderstood-800x800.jpg",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{
+					"service": "kehtameen video",
+					"url": "https://www.youtube.com/watch?v=Ca_fkROGxcg"
+				},
+				{
+					"service": "spotify",
+					"url": "https://open.spotify.com/album/3F7dakSTLRAnPJ6YZiTBKn?si=taQWhIprQUWq13cpYYJt_A"
+				},
+				{
+					"service": "apple music",
+					"url": "https://music.apple.com/us/album/misunderstood/1515044061"
+				},
+				{
+					"service": "bandcamp",
+					"url": "https://badopticsco.bandcamp.com/album/misunderstood"
+				},
+				{
+					"service": "soundcloud",
+					"url": "https://soundcloud.com/badopticsco/sets/hassaan-e-misunderstood"
+				},
+				{
+					"service": "amazon music",
+					"url": "https://music.amazon.com/albums/B0894723BH?tab=CATALOG"
+				}
+			]
+		}
+	]
+}

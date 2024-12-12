@@ -1,0 +1,63 @@
+-let i = 0;
+each s in sections
+	if(s.layout === 'freeform')
+		.gallery-section.gallery-section-freeform
+			h2.gallery-section-title.text-sans-web.antialias
+				!=s.title_html
+			.gallery-section-canvas(
+				style=`width: ${s.width}px; height: ${s.height}px;`
+				canvas-width=s.width
+			)
+				each p in s.images
+					picture(
+						class="gallery-image"
+						gallery-index=i++
+						image-ratio=1.0*p.width/p.height
+						style=`width: ${p.width}px; height: ${p.height}px; left: ${p.x}px; top: ${p.y}px;`
+					)
+						source(
+							srcset=path(s, p.file)
+							type=`image/${image_ext}`
+						)
+						source(
+							srcset=alt_path(s, p.file)
+							type=`image/${image_ext}`
+						)
+						img(
+							src=alt_path(s, p.file)
+							alt=p.name
+							tabindex=i
+						)
+	else if(s.layout === 'row-left' || s.layout === 'row-right' || s.layout === 'row-top' || s.layout === 'row-center' || s.layout === 'row-header')
+		div(
+			class=`gallery-section gallery-section-row-layout gallery-section-${s.layout}`
+		)
+			.gallery-section-canvas(
+				style=`width: ${s.width}px;`
+				canvas-width=s.width
+			)
+				h2.gallery-section-title.text-sans-web.antialias
+					!=s.title_html
+				-let section_image_index = 0;
+				each p in s.images
+					picture(
+						class="gallery-image"
+						gallery-index=i++
+						image-ratio=1.0*p.preview_width/p.preview_height
+						style=`width: ${s.image_width}; height: ${s.image_height}; max-width: ${p.preview_width}px; max-height: ${p.preview_height}px; order: ${section_image_index++}`
+					)
+						source(
+							srcset=path(s, gallery_file(p))
+							type=`image/${image_ext}`
+						)
+						source(
+							srcset=alt_path(s, gallery_file(p))
+							type=`image/${image_ext}`
+						)
+						img(
+							src=alt_path(s, gallery_file(p))
+							alt=p.name
+							tabindex=i
+						)
+						.gallery-image-title.text-sans-web.antialias
+							=p.name

@@ -1,0 +1,22 @@
+<!-- Modernizr -->
+<script src="/static/js/modernizr-custom.js"></script>
+<script>
+	// Swap background-image urls if can't use webp
+	Modernizr.on('webp', function (result) {
+		if(!result) {
+	  		$('.tile').each(function() {
+	  			$(this).css('background-image', `url("${$(this).attr('alt-path')}")`);
+	  		});
+	  	}
+  	});
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132118800-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-132118800-1');
+</script>

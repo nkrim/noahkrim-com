@@ -1,0 +1,32 @@
+doctype html
+html
+	head
+		title Bad Optics Collective
+		meta(
+			name='description'
+			content='Bad Optics is a sonic, visual, and interactive art collective formed by friends who met in Chicago.'
+		)
+		include ../pug_includes/head_base.html
+		link(
+			rel='stylesheet'
+			href='/static/css/style.css'
+		)
+		include ../pug_includes/head_social_meta_index.html
+	body
+		include ../pug_includes/noscript.html
+		include ../pug_includes/header.html
+		include ../pug_includes/main_nav.html
+		#mainContent.text-sans.antialias
+			#featuredTile
+			.tile-set
+				include ../pug_includes/tile-set.pug
+		include ../pug_includes/footer.html
+		script(src='/static/js/index.min.js')
+		include ../pug_includes/scripts.html
+		//- init meta_swaps valuse from releases
+		script
+			- for(let i=0; i<releases.length; i++)
+				- let r = releases[i]
+				- let image_meta = r.sharing_image || r.image
+				|
+				|meta_swaps["#{r.number}"] = {"title": "#{r.title} - #{r.artist}","description": "#{r.description_text}","url": "http://badoptics.co/#{r.number}.html","image-url": "http://badoptics.co#{image_meta.alt_path}","image-width": #{image_meta.width},"image-height": #{image_meta.height}};

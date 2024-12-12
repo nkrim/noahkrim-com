@@ -1,0 +1,61 @@
+doctype html
+html
+	head
+		title #{title} - #{artist}
+		meta(
+			name='description'
+			content=description_text
+		)/
+		include ../pug_includes/head_base.html
+		link(
+			rel='stylesheet'
+			href='/static/css/style.css'
+		)
+		include ../pug_includes/head_social_meta_release.pug
+	body
+		include ../pug_includes/noscript.html
+		include ../pug_includes/header_release.html
+		#mainContent.text-sans.antialias
+			#featuredTile.release-page: .tile-content
+				.tile-content-image-container
+					picture(
+						class="tile-content-header-image"
+					)
+						source(
+							srcset=image.path
+							type="image/webp"
+						)
+						source(
+							srcset=image.alt_path
+							type=`image/${/\.([\w]+)$/i.exec(image.alt_path)[1].toLocaleLowerCase()}`
+						)
+						img(
+							src=image.alt_path
+							alt=title
+					)
+				.tile-content-text-section
+					span.tile-media.text-small.text-mono.unstyle-link
+						=`[[${release_type}]]`
+					span.tile-date.text-small.text-mono
+						!='&nbsp'+release_date
+					br/
+					h1.tile-content-h1.text-large
+						=title
+					h2.tile-content-h2.text-medium
+						=artist
+					if sub_artist
+						h3.tile-content-h3.text-regular
+							=sub_artist
+					p.text-regular.unstyle-link
+						!=description_html
+					p.text-mono.tile-content-link-list
+						each link in links
+							a(
+								class="unstyle-link tile-content-link" 
+								href=link.url
+								target="_blank"
+							)
+								=link.service
+		include ../pug_includes/footer.html
+		script(src='/static/js/release.min.js')
+		include ../pug_includes/scripts.html
