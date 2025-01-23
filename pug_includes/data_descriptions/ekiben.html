@@ -1,0 +1,18 @@
+<p>
+    This site allows users to go on a quick eploration of the regionally-distinct
+    <i>ekiben</i>, bento found at Japanese train stations intended to be eaten
+    while riding the train.
+    You can select a variety of cities and investigate the ingredients and history
+    of a selected ekiben specific to that region.
+</p>
+<p>
+    One interesting engineering problem was how to allow selection and highlighting
+    of specific areas of the images. This was done by manually rotoscoping these
+    sections in photoshop while also generating a mask of that specific area.
+    While the rotoscoped image is used for the highlighitng, the masks are
+    composited these into a single image while, ensuring each area has a distinct
+    shade of red representing the area's ID.
+    There are actually two rendered canvases on the site, one of which is invisible
+    and displays this ID mask. I can then use the user's mouse position to query
+    this mask and highlight the associated area of the image.
+</p>

@@ -1,0 +1,18 @@
+<p>
+    RISC-V system emulator, primarily meant for teaching assembly
+    programming and computer organization concepts.
+</p>
+<p>
+    VRV implements the instruction set RV32IMF_Zicsr (32-bit base integer +
+    integer multiplication/division support, single-precision floating point
+    support, and control and status registers support) and offers two privilege
+    levels: machine and user modes.
+</p>
+<ul>
+    <li>Simulation backend assembles, links, and executes RISC-V assembly programs.</li>
+    <li>Configurable M-mode system file defines kernel functionality, e.g. trap handlers.</li>
+    <li>Execution supports both simplified std input and an MMIO TTY device interface.</li>
+    <li>Project maintains a CLI frontend and a QT GUI frontend with extensive debugging capabilities.
+        Actively working on a javascript+WASM frontend to run on the web.</li>
+    <li>Used in UC Davis course, reported as effective teaching aid by 80% of students.</li>
+</ul>

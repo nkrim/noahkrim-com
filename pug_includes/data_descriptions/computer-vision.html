@@ -1,0 +1,20 @@
+<p>
+    A collection of small computer vision projects.
+</p>
+<p>
+    <b>Image stitching</b> presents a procedure to stitch together images to form
+    a cohesive panoramic photo, compensating for differences in camera angle and position.
+    Harris corner detection is used to find a set of useful descriptors in the
+    images and then find good pairs of descriptors that may act as anchor points
+    to match up the images. Finally, RANSAC is used to randomly sample a set of
+    pairs and attempts a homographic projection built upon those points. This
+    leads to an almost exact reprojection of the contents of one image into the
+    space of the other.
+</p>
+<p>
+    <b>Filters and edge detection</b> contains a variety of experiments with
+    different kernel filters such as Gaussian blur, Sobel edge detection, and
+    bilateral filter. This culminates in an algorithm using the Hough transform
+    to create a set of lines that can characterize the most significant edges
+    of the image.
+</p>

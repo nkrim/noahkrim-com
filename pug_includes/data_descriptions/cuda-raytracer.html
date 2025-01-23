@@ -1,0 +1,16 @@
+<p>
+    A simple ray-tracing engine designed to test the performance improvement of
+    CUDA for this particular workload. The scene consists of a variable number of
+    randomly placed reflective spheres. The engine performs scattering and
+    accumulation to create a high quality image in real-time by improving fidelity
+    across frames.
+</p>
+<p>
+    CUDA parallelization is done at the level of areas of pixels in the rendered frame.
+    We test the assumption that each pixel within these small areas will processs a
+    similar number of ray bounces and access similar memory from the scene.
+    These factors will promote speedup.
+    This approach is tested against a serial implementation for
+    increasingly many spheres to show improvements from CUDA
+    as the scene grows more complex.
+</p>

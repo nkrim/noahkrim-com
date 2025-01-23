@@ -1,0 +1,33 @@
+<p>
+    A lineage-based transactional database written in Rust with a python interface.
+    This kind of database stores the changes in records after each transaction,
+    retaining the history of the record within the managed structure of the
+    database.
+    Indirection is limited by maintaining a chain of references from a base
+    record -- the record attached to the query structures -- and the tail record
+    -- the most recent version of the record.
+    Then the chain continues backwards in time all the way back to the base record.
+    Supports multithreaded query scheduling with concurrency control,
+    durable buffer pool, and variable-sized data elements.
+</p>
+<p>
+    Developed by a five-person team, my responsibilites and contributions include:
+    <ul>
+        <li>
+            <b>Record location</b> system that encodes both the logical range index
+            and the physical page and offset of the record's content all in one value.
+            This eases the query system by coupling this logical and physical info in a packed value.
+        </li>
+        <li>
+            <b>Durable buffer pool</b> acts as the interface between the file-system and the
+            database server's memory. Caches pages and allows multiple-reader single-writer
+            access to these cached pages. Writes dirty pages back to file-system on eviction.
+        </li>
+        <li>
+            <b>Concurrency control</b> procedure acting primarily on the buffer pool,
+            as this is the main point of contention. Ensures every transaction is able
+            to complete in isolation without being affected by other transactions,
+            all while minimizing redundant buffer frame evictions.
+        </li>
+    </ul>
+</p>
