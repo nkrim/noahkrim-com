@@ -3,7 +3,7 @@
 const main_fade_duration = 500;
 function setHtmlLoaded() {
 	$('html').addClass('loaded');
-	let scroll_top = window.scrollY + $('#featuredTile')[0].getBoundingClientRect().top - 60;
+	let scroll_top = 0;
 	setTimeout(() => 
 		window.scrollTo({
 			top: scroll_top,

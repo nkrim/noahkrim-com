@@ -84,8 +84,8 @@ $('.tile-borders').bind('click', function() {
 		tile_scroll_timeout = setTimeout((() => {
 				let mobile_width = window.innerWidth < 660;
 				let scroll_target = mobile_width 
-					? this.getBoundingClientRect().bottom - 40 
-					: this.getBoundingClientRect().top - 100;
+					? this.getBoundingClientRect().bottom - 20 
+					: this.getBoundingClientRect().top - 60;
 				let scroll_top = window.scrollY + scroll_target;
 				window.scrollTo({
 					top: scroll_top,

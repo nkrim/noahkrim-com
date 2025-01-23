@@ -1,4 +1,4 @@
-each r in releases.reverse()
+each r in releases
 	div(
 		id=r.number
 		class=`tile release-tile ${r.release_type}-tile`
@@ -32,10 +32,10 @@ each r in releases.reverse()
 				h1.tile-content-h1.text-large
 					=r.title
 				h2.tile-content-h2.text-medium
-					=r.artist
-				if r.sub_artist
+					=r.subtitle
+				if r.subtitle2
 					h3.tile-content-h3.text-regular
-						=r.sub_artist
+						=r.subtitle2
 				p.text-regular.unstyle-link
 					!=r.description_html
 				p.text-mono.tile-content-link-list
@@ -47,10 +47,7 @@ each r in releases.reverse()
 						)
 							=link.service
 		.tile-borders
-			div(
-				class="tile-title-text text-sans-web"
-				style="font-weight: 200;"
-			)
+			div.tile-title-text
 				span.issue-number.text-mono
 					=r.number
 			div.tile-border.tile-border-top

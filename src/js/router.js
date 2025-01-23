@@ -3,12 +3,12 @@
 // Data to swap for metadata based on the route of the album
 var meta_swaps = {
 	'home': {
-		'title': 'Bad Optics Collective',
-		'description': 'Bad Optics is a sonic, visual, and interactive art collective formed by friends who met in Chicago.',
-		'url': 'http://badoptics.co',
-		'image-url': 'http://badoptics.co/static/img/bad-optics-sharing-logo.jpg',
-		'image-width': 640,
-		'image-height': 460,
+		'title': 'Noah Krim',
+		'description': 'Software engineer experienced in computer system simulation, comptuer graphics, and operating systems.',
+		'url': 'https://noahkrim.com',
+		'image-url': 'https://noahkrim.com/static/img/Noah_Krim.png',
+		'image-width': 600,
+		'image-height': 600,
 	}
 };
 // Set up about
@@ -57,7 +57,7 @@ function open_empty_message(media_type) {
 		$(empty_message_div).css('width', '');
 		$(empty_message_span).css('width', '');
 		// Set text
-		$(empty_message_span).text('media-type [['+media_type+']] => not found');
+		$(empty_message_span).text('content-type [['+media_type+']] => not found');
 		// Adjust width
 		let span_rect = $(empty_message_span)[0].getBoundingClientRect();
 		$(empty_message_div).css({
@@ -103,10 +103,13 @@ function set_featured_header(showing_tiles, release_page=false) {
 const main_fade_duration = 500;
 let main_fade_timeout = null;
 const crawl_speed = 200;
-const crawl_home_top = 140;
+const crawl_diff = 160;
 let cur_crawl_timeout;
 let prev_route_word = null;
 let route_scroll_timeout = null;
+const allowed_routes = [
+	'engineer', 'gamedev', 'designer'
+];
 
 function route_change(route_path) {
 	clearTimeout(route_scroll_timeout);
@@ -184,20 +187,23 @@ function route_change(route_path) {
 		swap_meta_tags(); // Use 'home' meta
 		
 		// Test for filtering
-		if(!(route_word === 'sonic' || route_word === 'visual' || route_word === 'interactive' || route_word === 'about')) {
+		if(!(allowed_routes.includes(route_word))) {
 			route_word = '';
 		}
 	}
 
 	// Scroll to top on 'home' routing
-	if(prev_route_word !== null && route_word === '')
-		if(route_word === '')
+	if(prev_route_word !== null && route_word === '') {
+		if(route_word === '') {
+			let scroll_top = window.scrollY + $('#mainNav')[0].getBoundingClientRect().bottom - crawl_diff;
 			route_scroll_timeout = setTimeout(() => 
 				window.scrollTo({
-					top: crawl_home_top,
+					top: scroll_top,
 					behavior: 'smooth',
 				}), 
 				prev_route_word === route_word ? 0 : main_fade_duration);
+		}
+	}
 
 	// Test for and exit on redundant routing
 	if(prev_route_word !== null && prev_route_word === route_word) {
@@ -249,23 +255,22 @@ function route_change(route_path) {
 		}
 
 		// Set featured tile
-		if(release_routing) {
+		$('#bio').hide();
+		if(route_word === '') {
+			// Home page, use bio instead of featured tile
+			$('#bio').show();
+			set_featured_header();
+		}
+		else if(release_routing) {
+			// Specific tile page, set it as the featured tile
 			set_featured_header(page_routed_tile, true);
-			// Scroll to top
-			let scroll_top = window.scrollY + $('#featuredTile')[0].getBoundingClientRect().top - 60;
-			route_scroll_timeout = setTimeout(() => 
-				window.scrollTo({
-					top: scroll_top,
-					behavior: 'smooth',
-				}), 
-				main_fade_duration);
 		}
 		else if(route_word === 'about') {
 			// Clear featured header if on about page
 			set_featured_header();
 		}
 		else {
-			// Set the featured tile
+			// General filter, set the the featured tile from the tile set
 			set_featured_header(route_word === '' ? release_tiles : matching_tiles);
 		}
 
@@ -274,11 +279,22 @@ function route_change(route_path) {
 			$('.tile-set').addClass('about-set');
 		}
 		else {
-			$('.tile-set').removeClass('about-set');	
+			$('.tile-set').removeClass('about-set');
 		}
 
 		set_tile_content_container_positions();
 		$(main_content).removeClass('hidden');
+	}
+
+	// Scroll to top (home scroll already handled)
+	if (route_word !== '') {
+		let scroll_top = window.scrollY + $('#mainNav')[0].getBoundingClientRect().bottom - crawl_diff;
+		route_scroll_timeout = setTimeout(() => 
+			window.scrollTo({
+				top: scroll_top,
+				behavior: 'smooth',
+			}), 
+			main_fade_duration);
 	}
 
 	let main_content = $('#mainContent');
@@ -298,7 +314,7 @@ function route_change(route_path) {
 // history.pushState alternative that calls the proper router handlers
 function router_pushState(state, title, route_path) {
 	window.history.pushState(state, title, route_path);
-	route_change(route_path)
+	route_change(route_path);
 }
 
 // Pop state handler
@@ -308,12 +324,12 @@ $(window).on('popstate', function() {
 
 /* ROUTER CLICK HANDLERS */
 // Click handlers for nav header filters and logo
-$('#logoWrapper a, #expressions').click(() => router_pushState('','','/'));
-$('#sonicChoiceContainer').click(() => router_pushState('','','/sonic'));
-$('#visualChoiceContainer').click(() => router_pushState('','','/visual'));
-$('#interactiveChoiceContainer').click(() => router_pushState('','','/interactive'));
+$('#logoWrapper a, #mainTitle').click(() => router_pushState('','','/'));
+$('#engineerChoiceContainer').click(() => router_pushState('','','/engineer'));
+$('#gamedevChoiceContainer').click(() => router_pushState('','','/gamedev'));
+$('#designerChoiceContainer').click(() => router_pushState('','','/designer'));
 // About click handler
-$('#aboutLink').click(() => router_pushState('','','/about'));
+// $('#aboutLink').click(() => router_pushState('','','/about'));
 // Tile content header image handlers
 $('.tile-content-header-image').click(function() {
 	let tile = $(this).parents('.tile');

@@ -1,7 +1,7 @@
 doctype html
 html
 	head
-		title #{title} - #{artist}
+		title #{title}
 		meta(
 			name='description'
 			content=description_text
@@ -15,16 +15,13 @@ html
 	body
 		include ../pug_includes/noscript.html
 		include ../pug_includes/header_release.html
+		include ../pug_includes/main_nav_release.html
 		#mainContent.text-sans.antialias
 			#featuredTile.release-page: .tile-content
 				.tile-content-image-container
 					picture(
 						class="tile-content-header-image"
 					)
-						source(
-							srcset=image.path
-							type="image/webp"
-						)
 						source(
 							srcset=image.alt_path
 							type=`image/${/\.([\w]+)$/i.exec(image.alt_path)[1].toLocaleLowerCase()}`
@@ -42,10 +39,10 @@ html
 					h1.tile-content-h1.text-large
 						=title
 					h2.tile-content-h2.text-medium
-						=artist
-					if sub_artist
+						=subtitle
+					if subtitle2
 						h3.tile-content-h3.text-regular
-							=sub_artist
+							=subtitle2
 					p.text-regular.unstyle-link
 						!=description_html
 					p.text-mono.tile-content-link-list
