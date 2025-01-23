@@ -1,8 +1,9 @@
 // Includes
 const { src, dest, series, parallel, lastRun } = require('gulp');
-const del = require('del');
+const clean = require('gulp-clean');
 const log = require('fancy-log');
 const newer = require('gulp-newer');
+const { exec, execSync } = require('child_process');
 // html
 const fs = require('fs');
 const pug = require('gulp-pug');
@@ -17,14 +18,11 @@ const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 const minifyCSS = require('gulp-csso');
 // resources
-const cwebp = require('gulp-cwebp');
+const imagemin =require('imagemin');
+const webp = require('imagemin-webp');
 // galleryprep
 const imageResize = require('gulp-image-resize');
 const jeditor = require('gulp-json-editor');
-// upload
-const s3upload = require('gulp-s3-upload')({useIAM: true});
-// invalidate
-const cloudfront = require('gulp-cloudfront-invalidate');
 
 // UTILITY
 // ---------------
@@ -50,6 +48,7 @@ function flat(arr, depth=1) {
 const paths = {
 	pug: {
 		r_data: 'data-releases.json',
+		r_text_dir: 'pug_includes/data_descriptions/',
 		g_data: 'data-galleries.json',
 		index: 'pug_templates/index-template.pug',
 		release: 'pug_templates/release-template.pug',
@@ -62,7 +61,6 @@ const paths = {
 			'release': [
 				'index_exclude/loaded_release.js',
 				'index_exclude/router_override.js',
-				'invert.js',
 				'scroll.js',
 			],
 			'gallery': [
@@ -71,7 +69,6 @@ const paths = {
 				'index_exclude/gallery_resize.js',
 				'index_exclude/loaded_gallery.js',
 				'index_exclude/router_override.js',
-				'invert.js',
 				'scroll.js',
 			],
 		},
@@ -88,10 +85,8 @@ const paths = {
 		gallery_prep: 'resources/static/img/g/'
 	}
 }
-paths.clean = paths.out.base+'*';
+paths.clean = paths.out.base;
 paths.clean_gallery = paths.out.gallery_prep;
-
-
 
 // Pug config
 const pug_config = {
@@ -106,7 +101,7 @@ let g_data = JSON.parse(fs.readFileSync(paths.pug.g_data));
 const s3meta = {'uploaded-via': 'gulp-s3-upload'};
 const s3cache = 'max-age=60,s-maxage=31536000';
 const s3cache_browser = 'max-age=315360000,s-maxage=31536000';
-const cfdistro = 'E2HS6DFR9V8QEP';
+const cfdistro = 'E272WVRDL39R5C';
 
 // Image quality
 const image_quality = 85;
@@ -187,20 +182,51 @@ function alt_js() {
 	);
 }
 
+// Data aggregation
+function data_aggregate(cb) {
+	for (let rel of r_data.releases) {
+		try {
+			const html = fs.readFileSync(paths.pug.r_text_dir + rel.number + '.html', 'utf8');
+			let text = html;
+			text = text
+				.replace(/<[^>]*>/g, ' ')  // Replace HTML tags with a space
+				.replace(/\s+/g, ' ')      // Replace multiple spaces with single space
+				.trim();                   // Remove leading/trailing spaces
+			rel.description_html = html;
+			rel.description_text = text;
+		} catch (error) {
+			console.error('Error aggregating', rel.number + '.html');
+			rel.description_html = '';
+			rel.description_text = '';
+		}
+	}
+	cb();
+}
+
 // Resources
 function move_resources() {
-	return src(paths.in.resources)
+	return src(paths.in.resources, {encoding: false})
 		.pipe(newer(paths.out.base))
 		.pipe(dest(paths.out.base));
 }
-function webp_images() {
-	return src(paths.in.resource_images)
+function webp_images(cb) {
+	imagemin([paths.in.resource_images], {
+		destination: paths.out.webp,
+		plugins: [
+			webp({ quality: image_quality })
+		]
+	});
+	cb();
+	/*return src(paths.in.resource_images)
 		.pipe(newer({
 			dest: paths.out.webp,
 			ext: '.webp'
 		}))
-		.pipe(cwebp({q: image_quality}))
-		.pipe(dest(paths.out.webp));
+		.pipe(imagemin([
+			webp({quality: image_quality}),
+		]))
+		.pipe(rename({extname: ".webp"}))
+		.pipe(dest(paths.out.webp));*/
 }
 
 // Gallery Prep
@@ -266,95 +292,42 @@ function gallery_image_prep() {
 
 // Upload
 let changed_keynames = null;
-function upload() {
-	changed_keynames = [];
-	return src(paths.out.base+'**/*')
-		.pipe(s3upload({
-			Bucket: 'badoptics.co',
-			ACL: 'private',
-			maps:{
-				Metadata: () => s3meta,
-				CacheControl: (k) => {
-					if(/static\/img\//.exec(k)) {
-						return s3cache_browser
-					}
-					return s3cache;
-				}
-			},
-			onChange: (k) => {
-				changed_keynames.push('/'+k);
-			}
-		},{
-			maxRetries: 5,
-		}));
-}
-
-// Invalidate
-function invalidate_custom(paths) {
-	return src('*').pipe(
-		cloudfront({
-			distribution: cfdistro,
-			paths: paths,
-		}));
-}
-function invalidate_changed() {
-	if(changed_keynames === null || changed_keynames.length === 0)
-		return Promise.resolve(log('-- No changes, skipping invalidations'));
-	log('-- INVALIDATING:');
-	changed_keynames.forEach(e => log('-- '+e));
-	return invalidate_custom(changed_keynames);
-}
-function invalidate_index() {
-	return invalidate_custom(['/index.html']);
-}
-function invalidate_html() {
-	return invalidate_custom(['/*.html']);
-}
-function invalidate_js() {
-	return invalidate_custom(['/static/js/*']);
-}
-function invalidate_css() {
-	return invalidate_custom(['/static/css/*']);
-}
-function invalidate_all() {
-	return invalidate_custom(['/*']);
+function upload(cb) {
+	try {
+		execSync(`./aws.py`, { stdio: 'inherit' });
+		cb();
+	} catch (error) {
+		cb(new Error(`Upload failed: {error}`));
+	}
 }
 
 // Cleanup
-function clean() {
-	return del(paths.clean);
+function clean_build() {
+	return src(paths.clean).pipe(clean());
 }
 function clean_gallery() {
-	return del(paths.clean_gallery);
+	return src(paths.clean_gallery).pipe(clean());
 }
 
 // Exports - clean
-exports.clean = clean;
+exports.clean = clean_build;
 exports.clean_gallery = clean_gallery;
-exports.clean_full = series(clean, clean_gallery);
+exports.clean_full = series(clean_build, clean_gallery);
 // Exports - standard
 exports.galleryprep = series(data_gallery_viewer_scale_calc, parallel(...gallery_image_prep()));
 exports.resources = series(webp_images, move_resources);
 exports.js = parallel(index_js, ...alt_js());
 exports.css = css;
-exports.html = parallel(index, ...release_pages(), ...gallery_pages());
+exports.html = series(data_aggregate, parallel(index, ...release_pages()/*, ...gallery_pages()*/));
 // Exports - build combo
 exports.build_inplace = parallel(exports.html, css, exports.js, exports.resources);
 exports.build = series(clean, exports.build_inplace);
 exports.build_gallery = series(exports.clean_full, exports.galleryprep, exports.build_inplace);
 exports.nohtml = parallel(css, exports.js, exports.resources);
 // Exports - uploading
-exports.upload = series(upload, invalidate_changed);
-exports.upload_no_invalidate = upload;
-exports.upload_ni = exports.upload_no_invalidate;
-// Exports - invalidations
-exports.invalidate_index = invalidate_index;
-exports.invalidate_js = invalidate_js;
-exports.invalidate_css = invalidate_css;
-exports.invalidate_html = invalidate_html;
-exports.invalidate_all = invalidate_all;
+exports.upload = upload;
 // Exports - combos
 exports.full = series(exports.build, exports.upload);
-exports.fresh = series(exports.build, exports.upload_no_invalidate, invalidate_all);
+exports.fresh = series(exports.clean, exports.build, exports.upload);
 // Exports - default
 exports.default = exports.build_inplace;
