@@ -1,7 +1,7 @@
 /* WHOLE PAGE 
 ============= */
 :root {
-	--color-bg: hsl(39 100% 96% / 1);
+	--color-bg: #FFF9EB /*hsl(39 100% 96% / 1) + 1*G since photopea screwed me*/;
 	--color-lines: #E39300;
 	--color-text: #000000;
 	--color-tile-loading: #ddd;
