@@ -1,7 +1,7 @@
 /* WHOLE PAGE 
 ============= */
 :root {
-	--color-bg: rgb(248, 249, 250) /* taken from wikipedia */;
+	--color-bg: hsl(39 100% 96% / 1);
 	--color-lines: #E39300;
 	--color-text: #000000;
 	--color-tile-loading: #ddd;
@@ -379,6 +379,7 @@ END HEADER */
 
 	text-align: center;
 	font-size: 18px;
+	color: var(--color-text);
 }
 #bio > p:first-child {
 	margin-top: 0;
