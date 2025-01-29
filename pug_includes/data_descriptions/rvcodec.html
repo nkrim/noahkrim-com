@@ -1,0 +1,25 @@
+<p>
+    A webapp that helps students visualize how RISC-V instructions are encoded
+    and decoded.
+    Can either encode or decode the input and presents a visualization of the
+    fields of the assembly instruction and how they map to the bits in the
+    encoded instruction word.
+</p>
+<p>
+    Aa a contributor to this project, I made the following contributions:
+</p>
+<ul>
+    <li>
+        Expanded the core encoder/decoder from just the base RV32I to support
+        all ratified extensions in RV32/64/128GC.
+    </li>
+    <li>
+        Fixed bugs and normalized conventions in the core to make it more consistent
+        and maintainable.
+    </li>
+    <li>
+        Implemented the autocomplete/lookup feature in the input field using
+        a custom prefix trie and a system to map instructions to their
+        operand format.
+    </li>
+</ul>

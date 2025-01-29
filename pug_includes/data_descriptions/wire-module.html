@@ -1,0 +1,23 @@
+<p>
+    A problem-solving game inspired by Zachtronics and digital logic.
+    Abanoned as a prototype due to my own inability to explain the mechanics,
+    I left it as "purposefully" inpenetrable in order to inspire the rare
+    few to discover its functionality (inspired by games like
+    <a href="https://games.increpare.com/Gestalt_OS/" target="_blank">Gestalt-OS</a>).
+</p>
+<p>
+    Each tile can contain a logic module and can be linked with wires between the modules.
+    Each tile can also be customized to interact with different signals or to
+    react in different ways (toggling, rotating, etc) when a signal is emitted.
+    Signals can be emitted by having power sent to themvia the wires,
+    and recievers can react to the emission of a signal by transmitting power themselves.
+    The goal is to emit a certain combination of signals in series in a reproducible manner.
+</p>
+<p>
+    Made with the cross-platform haxe language and the haxegon game framework which
+    was primarily used for the rendering API. The bulk of the game's architecture
+    and logic was handmade.
+    The game simulation is highly performant and could run tens of hundreds of thousands
+    of iterations per second from a dense and complicated circuit (though neither
+    that complexity nor that speed is at all necessary for the game).
+</p>

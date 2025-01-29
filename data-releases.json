@@ -72,6 +72,29 @@
 			]
 		},
 		{
+			"number": "gem5",
+			"release_type": "engineer",
+			"release_date": "2024",
+			"title": "Computer Architecture Simulator",
+			"subtitle": "Research Software Engineer and Contributor",
+			"image": {
+				"path": "/static/img/gem5-800x800.webp",
+				"alt_path": "/static/img/gem5-800x800.png",
+				"width": 800,
+				"height": 800
+			},
+			"links": [
+				{
+					"service": "simulator website",
+					"url": "https://www.gem5.org/"
+				},
+				{
+					"service": "bootcamp website",
+					"url": "https://gem5bootcamp.github.io/2024/"
+				}
+			]
+		},
+		{
 			"number": "ekiben",
 			"release_type": "designer",
 			"release_date": "2024",
@@ -210,10 +233,10 @@
 			"release_type": "engineer",
 			"release_date": "2022 -- 2023",
 			"title": "rvcodec.js",
-			"subtitle": "CPU Simulation and Assembler",
+			"subtitle": "RISC-V Instruction Enoder/Decoder",
 			"image": {
 				"path": "/static/img/rvcodec-800x800.webp",
-				"alt_path": "/static/img/rvcodec-800x800.jpg",
+				"alt_path": "/static/img/rvcodec-800x800.png",
 				"width": 800,
 				"height": 800
 			},
@@ -256,7 +279,7 @@
 			"release_type": "engineer",
 			"release_date": "2022",
 			"title": "MASM Mandelbrot",
-			"subtitle": "AVX Powered Mandelbrot Explorer",
+			"subtitle": "AVX-Powered Mandelbrot Explorer",
 			"image": {
 				"path": "/static/img/masm-mandelbrot-800x800.webp",
 				"alt_path": "/static/img/masm-mandelbrot-800x800.png",
@@ -300,8 +323,8 @@
 			"title": "WebGL Deferred Renderer",
 			"subtitle": "",
 			"image": {
-				"path": "/static/img/gallery-800x800.webp",
-				"alt_path": "/static/img/gallery-800x800.png",
+				"path": "/static/img/webgl-deferred-800x800.webp",
+				"alt_path": "/static/img/webgl-deferred-800x800.png",
 				"width": 800,
 				"height": 800
 			},

@@ -1,0 +1,15 @@
+<p>
+    A cloth simulation built with OpenGL and SFML for the UI.
+    Supports a variety of options to customize the aesthetics of the mesh and
+    the quality of the simulation.
+</p>
+<p>
+    Supports mouse interaction with the mesh via direct manipulation of mesh nodes
+    via dragging, pinning, or deletion.
+<p>
+    Simulation is implemented with Verlet integration to propogate the forces
+    while preventing erroneous increases in system energy and the mesh is constructed
+    with constraints on edge that are iteratively resolved to stabilize the results.
+    The rendered mesh is itself interpolated at a higher resolution than the simulation mesh,
+    efficiently improving the apperance of the simulation.
+</p>

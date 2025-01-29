@@ -1,18 +1,24 @@
 <p>
-    RISC-V system emulator, primarily meant for teaching assembly
-    programming and computer organization concepts.
+    alARM is a simple ARM-like ISA used an assignment for the UC Davis
+    computer architecture course.
 </p>
 <p>
-    VRV implements the instruction set RV32IMF_Zicsr (32-bit base integer +
-    integer multiplication/division support, single-precision floating point
-    support, and control and status registers support) and offers two privilege
-    levels: machine and user modes.
+    The assignment specified a digital logic simulation of an alARM CPU
+    to be made in the program Logisim. The design and implementation of this
+    CPU is documented in the whitepaper linked below.
 </p>
-<ul>
-    <li>Simulation backend assembles, links, and executes RISC-V assembly programs.</li>
-    <li>Configurable M-mode system file defines kernel functionality, e.g. trap handlers.</li>
-    <li>Execution supports both simplified std input and an MMIO TTY device interface.</li>
-    <li>Project maintains a CLI frontend and a QT GUI frontend with extensive debugging capabilities.
-        Actively working on a javascript+WASM frontend to run on the web.</li>
-    <li>Used in UC Davis course, reported as effective teaching aid by 80% of students.</li>
-</ul>
+<p>
+    The original assignment required hand-assembling programs into the bytecode
+    so that it could be loaded into Logisim.
+    As a student in the class, I volunteered to write an assembler for the rest
+    of the class to use to speed up this tedious process.
+    The assembler includes a choice of strict or relaxed syntaxes, highly
+    informative error messages, and pseudo-instructions.
+    You can see a full specification of the assembly syntax in the assembler's README.
+</p>
+<p>
+    The assembler was written to gracefully handle the addition of new
+    instructions and pseudo-instructions -- this proved useful when
+    students in future iterations of the class forked and easily updated the
+    assembler for new project specifications.
+</p>
